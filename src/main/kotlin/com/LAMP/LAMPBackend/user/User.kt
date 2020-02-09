@@ -1,4 +1,4 @@
-package com.LAMP.LAMPBackend
+package com.LAMP.LAMPBackend.user
 
 import javax.persistence.*
 

@@ -1,6 +1,6 @@
 package com.LAMP.LAMPBackend.diary
 
-import com.LAMP.LAMPBackend.User
+import com.LAMP.LAMPBackend.user.User
 import java.util.*
 import javax.persistence.*
 
