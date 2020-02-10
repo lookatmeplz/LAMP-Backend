@@ -5,12 +5,22 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
+@Table(name = "lamp_diary")
 data class Diary(@Id
-                 @GeneratedValue(strategy = GenerationType.AUTO)
+                 @Column(name = "diary_id")
+                 @GeneratedValue(strategy = GenerationType.Auto)
                  var id: Int? = null,
+
                  @ManyToOne(fetch = FetchType.LAZY)
                  @JoinColumn(name = "user_id")
                  var user: User,
-                 var date: Date?,
+
+                 @Column(name = "created_at")
+                 @Temporal(TemporalType.TIMESTAMP)
+                 var createdAt: Date,
+                 @Column(name = "updated_at")
+                 @Temporal(TemporalType.TIMESTAMP)
+                 var updatedAt: Date,
+
                  var title: String,
                  var content: String)
