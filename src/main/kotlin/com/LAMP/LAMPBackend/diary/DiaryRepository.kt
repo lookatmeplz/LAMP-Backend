@@ -1,7 +1,5 @@
 package com.LAMP.LAMPBackend.diary
 
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.PagingAndSortingRepository
 
-interface DiaryRepository : CrudRepository<Diary, Int> {
-
-}
+interface DiaryRepository : PagingAndSortingRepository<DiaryEntity, Int>
