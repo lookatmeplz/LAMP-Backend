@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class LampBackendApplication
+class LampApplication
 
 fun main(args: Array<String>) {
-	runApplication<LampBackendApplication>(*args)
+	runApplication<LampApplication>(*args)
 }

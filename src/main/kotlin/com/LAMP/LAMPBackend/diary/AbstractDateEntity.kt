@@ -9,8 +9,8 @@ import javax.persistence.*
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
 abstract class AbstractDateEntity(@CreatedDate
-                    @Column(name = "created_at")
-                    var createdAt: LocalDateTime? = null,
+                                  @Column(name = "created_at")
+                                  var createdAt: LocalDateTime? = null,
                                   @LastModifiedDate
-                    @Column(name = "updated_at")
-                    var updatedAt: LocalDateTime? = null)
+                                  @Column(name = "updated_at")
+                                  var updatedAt: LocalDateTime? = null)

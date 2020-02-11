@@ -8,10 +8,14 @@ import org.junit.jupiter.api.TestInstance
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.test.context.junit4.SpringRunner
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 @RunWith(SpringRunner::class)
 @DataJpaTest(showSql = true)
@@ -59,6 +63,47 @@ class DiaryTest (@Autowired val diaryRepository: DiaryRepository,
         assertEquals(userRepository.findByName("alice"), diary.user, "findById(1)'s user should be alice")
         assertNotNull(diary.createdAt, "findById(1)'s createdAt should not be null")
         assertNotNull(diary.updatedAt, "findById(1)'s updatedAt should not be null")
+    }
+
+    @Test
+    fun `Diary Paging Test 1`() {
+        val pageable = PageRequest.of(0, 5, Sort.by("id").descending())
+        val page = diaryRepository.findAll(pageable)
+        assertEquals(2, page.totalPages, "Total Pages should be 2!")
+    }
+
+    @Test
+    fun `Diary Paging Test 2`() {
+        val pageable = PageRequest.of(0, 5, Sort.by("id").descending())
+        val page = diaryRepository.findAll(pageable)
+        assertEquals(10, page.first().id, "Page's first id should be 10")
+        assertEquals(6, page.last().id, "Page's first id should be 6")
+    }
+
+    @Test
+    fun `Diary Paging Test 3`() {
+        val pageable = PageRequest.of(0, 50, Sort.by("id").descending())
+        val page = diaryRepository.findAll(pageable)
+        assertEquals(10, page.first().id, "Page's first id should be 10")
+        assertEquals(1, page.last().id, "Page's first id should be 1")
+    }
+
+    @Test
+    fun `Diary Paging Test 4`() {
+        diaryRepository.deleteById(6)
+
+        val pageable = PageRequest.of(0, 5, Sort.by("id").descending())
+        val page = diaryRepository.findAll(pageable)
+        assertEquals(10, page.first().id, "Page's first id should be 10")
+        assertEquals(5, page.last().id, "Page's first id should be 1")
+    }
+
+    @Test
+    fun `Diary Paging Test 5`() {
+        diaryRepository.deleteAll()
+        val page = diaryRepository.findById(1)
+        println(page)
+        assertTrue(page.isEmpty)
     }
 
 }

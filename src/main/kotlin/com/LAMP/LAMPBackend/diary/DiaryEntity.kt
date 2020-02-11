@@ -9,14 +9,14 @@ import javax.persistence.*
 @Entity(name = "lamp_diary")
 @EntityListeners(AuditingEntityListener::class)
 data class DiaryEntity(@Id
-                 @Column(name = "diary_id")
-                 @GeneratedValue(strategy = GenerationType.AUTO)
-                 var id: Int? = null,
+                       @Column(name = "diary_id")
+                       @GeneratedValue(strategy = GenerationType.AUTO)
+                       var id: Int? = null,
 
                        @CreatedBy
-                 @ManyToOne(fetch = FetchType.LAZY)
-                 @JoinColumn(name = "user_id")
-                 var user: UserEntity,
+                       @ManyToOne(fetch = FetchType.LAZY)
+                       @JoinColumn(name = "user_id")
+                       var user: UserEntity,
 
                        var title: String,
                        var content: String) : AbstractDateEntity()
