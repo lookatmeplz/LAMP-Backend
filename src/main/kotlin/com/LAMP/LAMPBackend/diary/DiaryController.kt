@@ -1,17 +1,16 @@
 package com.LAMP.LAMPBackend.diary
 
+import com.LAMP.LAMPBackend.user.UserRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
 @RequestMapping("diary")
-class LampController (val diaryRepository: DiaryRepository) {
+class LampController (val diaryRepository: DiaryRepository,
+                      val userRepository: UserRepository) {
     @GetMapping
     fun main(): String {
         return "main diary"
@@ -28,7 +27,7 @@ class LampController (val diaryRepository: DiaryRepository) {
         }
     }
 
-    @GetMapping("/diary/{id}")
+    @GetMapping("{id}")
     fun diary(@PathVariable("id") id: Int?): DiaryEntity? {
         val diaryId: Int = id?: diaryRepository.count().toInt()
         val diary = diaryRepository.findById(diaryId)
@@ -37,6 +36,16 @@ class LampController (val diaryRepository: DiaryRepository) {
             false -> diary.get()
             else -> null
         }
+    }
+
+    @PostMapping
+    fun addDiary(@RequestHeader("username") username: String,
+                 @RequestHeader("title") title: String,
+                 @RequestHeader("content") content: String): Boolean {
+        val user = userRepository.findByName(username) ?: return false
+        val diary = DiaryEntity(user = user, title = title, content = content)
+        diaryRepository.save(diary)
+        return true;
     }
 
 }

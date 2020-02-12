@@ -14,7 +14,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.test.context.junit4.SpringRunner
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
-import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @RunWith(SpringRunner::class)
