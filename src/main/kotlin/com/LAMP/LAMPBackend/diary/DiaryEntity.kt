@@ -5,7 +5,6 @@ import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import javax.persistence.*
 
-//@MappedSuperclass
 @Entity(name = "lamp_diary")
 @EntityListeners(AuditingEntityListener::class)
 data class DiaryEntity(@Id
