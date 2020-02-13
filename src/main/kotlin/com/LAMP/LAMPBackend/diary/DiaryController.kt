@@ -42,7 +42,7 @@ class LampController (val diaryRepository: DiaryRepository,
     fun addDiary(@RequestHeader("username") username: String,
                  @RequestHeader("title") title: String,
                  @RequestHeader("content") content: String): Boolean {
-        val user = userRepository.findByName(username) ?: return false
+        val user = userRepository.findByUserName(username) ?: return false
         val diary = DiaryEntity(user = user, title = title, content = content)
         diaryRepository.save(diary)
         return true;
