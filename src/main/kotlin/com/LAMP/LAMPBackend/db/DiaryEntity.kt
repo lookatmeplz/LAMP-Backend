@@ -1,6 +1,5 @@
-package com.LAMP.LAMPBackend.diary
+package com.LAMP.LAMPBackend.db
 
-import com.LAMP.LAMPBackend.user.UserEntity
 import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import javax.persistence.*

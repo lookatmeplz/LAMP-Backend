@@ -1,4 +1,4 @@
-package com.LAMP.LAMPBackend.user
+package com.LAMP.LAMPBackend.db
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.*

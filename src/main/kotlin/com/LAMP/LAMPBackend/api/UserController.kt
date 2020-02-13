@@ -1,4 +1,4 @@
-package com.LAMP.LAMPBackend.user
+package com.LAMP.LAMPBackend.api
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

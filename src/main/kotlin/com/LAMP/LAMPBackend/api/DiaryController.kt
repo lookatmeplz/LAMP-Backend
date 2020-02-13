@@ -1,6 +1,8 @@
-package com.LAMP.LAMPBackend.diary
+package com.LAMP.LAMPBackend.api
 
-import com.LAMP.LAMPBackend.user.UserRepository
+import com.LAMP.LAMPBackend.db.DiaryEntity
+import com.LAMP.LAMPBackend.model.DiaryRepository
+import com.LAMP.LAMPBackend.model.UserRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort

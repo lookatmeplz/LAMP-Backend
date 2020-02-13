@@ -1,5 +1,6 @@
-package com.LAMP.LAMPBackend.user
+package com.LAMP.LAMPBackend.model
 
+import com.LAMP.LAMPBackend.db.UserEntity
 import org.springframework.data.repository.CrudRepository
 
 interface UserRepository : CrudRepository<UserEntity, Int> {

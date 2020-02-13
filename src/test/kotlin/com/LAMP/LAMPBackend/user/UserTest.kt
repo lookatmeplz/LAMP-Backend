@@ -1,5 +1,7 @@
 package com.LAMP.LAMPBackend.user
 
+import com.LAMP.LAMPBackend.db.UserEntity
+import com.LAMP.LAMPBackend.model.UserRepository
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -26,37 +28,37 @@ class UserTest (@Autowired val userRepository: UserRepository) {
 
     @Test
     fun `Find User By Name 1`() {
-        val alice:UserEntity? = userRepository.findByUserName("alice")
+        val alice: UserEntity? = userRepository.findByUserName("alice")
         assertNotNull(alice, "findByName('alice') should not be null!")
     }
 
     @Test
     fun `Find User By Name 2`() {
-        val bob:UserEntity? = userRepository.findByUserName("bob")
+        val bob: UserEntity? = userRepository.findByUserName("bob")
         assertNotNull(bob, "findByName('bob') should not be null!")
     }
 
     @Test
     fun `Find User By Name id 1`() {
-        val alice:UserEntity? = userRepository.findByUserName("alice")
+        val alice: UserEntity? = userRepository.findByUserName("alice")
         assertEquals(1, alice?.id, "Alice's id should be 1")
     }
 
     @Test
     fun `Find User By Name id 2`() {
-        val bob:UserEntity? = userRepository.findByUserName("bob")
+        val bob: UserEntity? = userRepository.findByUserName("bob")
         assertEquals(2, bob?.id, "Bob's id should be 1")
     }
 
     @Test
     fun `Find User By Email 1`() {
-        val alice:UserEntity? = userRepository.findByEmail("alice@gmail.com")
+        val alice: UserEntity? = userRepository.findByEmail("alice@gmail.com")
         assertNotNull(alice, "findByEmail('alice@gmail.com') should not be null!")
     }
 
     @Test
     fun `Find User By Email 2`() {
-        val bob:UserEntity? = userRepository.findByEmail("bob@gmail.com")
+        val bob: UserEntity? = userRepository.findByEmail("bob@gmail.com")
         assertNotNull(bob, "findByEmail('bob@gmail.com') should not be null!")
     }
 

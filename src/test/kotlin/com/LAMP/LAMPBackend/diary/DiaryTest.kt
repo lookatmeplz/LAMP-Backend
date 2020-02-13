@@ -1,7 +1,9 @@
 package com.LAMP.LAMPBackend.diary
 
-import com.LAMP.LAMPBackend.user.UserEntity
-import com.LAMP.LAMPBackend.user.UserRepository
+import com.LAMP.LAMPBackend.db.DiaryEntity
+import com.LAMP.LAMPBackend.db.UserEntity
+import com.LAMP.LAMPBackend.model.DiaryRepository
+import com.LAMP.LAMPBackend.model.UserRepository
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
