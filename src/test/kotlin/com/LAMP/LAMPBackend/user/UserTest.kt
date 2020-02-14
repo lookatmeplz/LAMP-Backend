@@ -19,8 +19,15 @@ class UserTest (@Autowired val userRepository: UserRepository) {
 
     @BeforeAll
     fun setup() {
-        val user1 = UserEntity(name = "alice", email = "alice@gmail.com")
-        val user2 = UserEntity(name = "bob", email = "bob@gmail.com")
+        val user1 = UserEntity(username = "alice01",
+                               password = "password",
+                               roles = "User",
+                               name = "alice",
+                               email = "alice@gmail.com")
+        val user2 = UserEntity(username = "bob01",
+                               password = "password",
+                               roles = "User",
+                               name = "bob", email = "bob@gmail.com")
 
         userRepository.save(user1)
         userRepository.save(user2)
@@ -28,25 +35,25 @@ class UserTest (@Autowired val userRepository: UserRepository) {
 
     @Test
     fun `Find User By Name 1`() {
-        val alice: UserEntity? = userRepository.findByUserName("alice")
+        val alice: UserEntity? = userRepository.findByUsername("alice")
         assertNotNull(alice, "findByName('alice') should not be null!")
     }
 
     @Test
     fun `Find User By Name 2`() {
-        val bob: UserEntity? = userRepository.findByUserName("bob")
+        val bob: UserEntity? = userRepository.findByUsername("bob")
         assertNotNull(bob, "findByName('bob') should not be null!")
     }
 
     @Test
     fun `Find User By Name id 1`() {
-        val alice: UserEntity? = userRepository.findByUserName("alice")
+        val alice: UserEntity? = userRepository.findByUsername("alice")
         assertEquals(1, alice?.id, "Alice's id should be 1")
     }
 
     @Test
     fun `Find User By Name id 2`() {
-        val bob: UserEntity? = userRepository.findByUserName("bob")
+        val bob: UserEntity? = userRepository.findByUsername("bob")
         assertEquals(2, bob?.id, "Bob's id should be 1")
     }
 

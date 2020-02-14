@@ -13,8 +13,7 @@ data class UserEntity(@Id
                       var username: String,
                       var password: String,
 
-                      @ElementCollection(fetch = FetchType.EAGER)
-                      var roles: List<String>,
+                      var roles: String,
                       var name: String,
                       var email: String) {
 

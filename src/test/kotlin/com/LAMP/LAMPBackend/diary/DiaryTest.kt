@@ -27,7 +27,11 @@ class DiaryTest (@Autowired val diaryRepository: DiaryRepository,
 
     @BeforeAll
     fun setup() {
-        val user = UserEntity(name = "alice", email = "alice@gmail.com")
+        val user = UserEntity(username = "alice01",
+                              password = "password",
+                              roles = "User",
+                              name = "alice",
+                              email = "alice@gmail.com")
         userRepository.save(user)
 
         for (i in 1..10) {
@@ -61,7 +65,7 @@ class DiaryTest (@Autowired val diaryRepository: DiaryRepository,
         assertEquals(1, diary.id, "findById(1)'s id should be 1!")
         assertEquals("Diary Title 1", diary.title, "findById(1)'s title should be 'Diary Title 1'!")
         assertEquals("Diary Contents 1", diary.content, "findById(1)'s id should be 'Diary Contents 1'!")
-        assertEquals(userRepository.findByUserName("alice"), diary.user, "findById(1)'s user should be alice")
+        assertEquals(userRepository.findByUsername("alice"), diary.user, "findById(1)'s user should be alice")
         assertNotNull(diary.createdAt, "findById(1)'s createdAt should not be null")
         assertNotNull(diary.updatedAt, "findById(1)'s updatedAt should not be null")
     }
